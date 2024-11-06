@@ -1,0 +1,6 @@
+zmodule completion
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-history-substring-search
+zmodule wbingli/zsh-wakatime
+zmodule Aloxaf/fzf-tab
