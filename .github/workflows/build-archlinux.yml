@@ -1,6 +1,7 @@
 name: Build Arch Linux Docker Image
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - archlinux
