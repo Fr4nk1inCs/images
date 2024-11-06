@@ -13,9 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: docker-hub
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: "archlinux"
       - name: setup docker buildx
         uses: docker/setup-buildx-action@v3
       - name: login to docker hub
