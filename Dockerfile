@@ -16,3 +16,5 @@ COPY zimrc /root/.zimrc
 
 RUN zsh -c "ZIM_HOME=/root/.zim source /root/.zim/zimfw.zsh install" && \
     zsh -c "ZIM_HOME=/root/.zim source /root/.zim/zimfw.zsh compile"
+
+ENTRYPOINT ["/usr/bin/zsh"]
