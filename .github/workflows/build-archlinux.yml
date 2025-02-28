@@ -21,16 +21,15 @@ jobs:
           username: fr4nk1in
           password: ${{secrets.DOCKERHUB_TOKEN}}
       - name: build and push
+        id: build_push
         uses: docker/build-push-action@v6
         with:
           push: true
           tags: fr4nk1in/archlinux:latest
-      - name: extract image
-        run: |
-          docker pull fr4nk1in/archlinux:latest
-          docker image save fr4nk1in/archlinux:latest | gzip > /tmp/archlinux-latest.tar.gz
+          outputs: |
+            type=docker,dest=archlinux-latest.tar
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: archlinux-latest.tar.gz
-          path: /tmp/archlinux-latest.tar.gz
+          name: archlinux-latest.tar
+          path: archlinux-latest.tar
