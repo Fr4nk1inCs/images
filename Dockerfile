@@ -32,14 +32,17 @@ RUN zsh -c "ZIM_HOME=/root/.zim source /root/.zim/zimfw.zsh install" && \
 
 # tmux configuration
 ADD https://raw.githubusercontent.com/EdenEast/nightfox.nvim/refs/heads/main/extra/nordfox/nordfox.tmux /root/.tmux.conf
-RUN echo 'set -g default-terminal "screen-256color"' >> /root/.tmux.conf
-RUN echo "set -g mouse on" >> /root/.tmux.conf
-RUN echo "set -g allow-passthrough on" >> /root/.tmux.conf
+RUN echo 'set -g default-terminal "tmux-256color"' >> /root/.tmux.conf
+RUN echo 'set -g terminal-overrides "tmux-256color"' >> /root/.tmux.conf
+RUN echo 'set -g mouse on' >> /root/.tmux.conf
+RUN echo 'set -g allow-passthrough on' >> /root/.tmux.conf
+RUN echo 'set -g focus-events on' >> /root/.tmux.conf
 
 # bat configuration
 ADD https://raw.githubusercontent.com/EdenEast/nightfox.nvim/refs/heads/main/extra/nordfox/nordfox.tmTheme /root/.config/bat/themes/nordfox.tmTheme
 RUN echo "--style=numbers,header" >> /root/.config/bat/config
 RUN echo "--theme=nordfox" >> /root/.config/bat/config
+RUN bat cache --build
 
 ENV TERM=xterm-256color
 ENV COLORTERM=truecolor
