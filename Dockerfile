@@ -1,10 +1,5 @@
 FROM archlinux:latest
 
-# update mirrorlist
-ADD https://raw.githubusercontent.com/greyltc/docker-archlinux/master/get-new-mirrors.sh /usr/bin/update-mirrorlist
-RUN chmod +x /usr/bin/update-mirrorlist
-RUN /usr/bin/update-mirrorlist
-
 RUN pacman -Syu --noconfirm && \
     pacman-key --init && \
     pacman-key --populate archlinux && \
