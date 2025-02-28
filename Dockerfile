@@ -9,6 +9,11 @@ RUN pacman -S --noconfirm base-devel git gdb vim && \
     pacman -S --noconfirm fzf ripgrep zoxide neovim eza starship zsh tmux bat && \
     pacman -S --noconfirm wget curl
 
+RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
+    pacman -S --noconfirm --needed cuda
+
+RUN pacman -S --noconfirm python-pip nvtop btop htop
+
 # AUR helper
 ARG AUR_USER=aur
 ARG AUR_HELPER=paru
