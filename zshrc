@@ -53,6 +53,7 @@ alias -- ls=eza
 alias -- lt='eza --tree'
 alias -- tree='eza -T'
 alias -- v=nvim
+alias -- vim=nvim
 alias -- vimdiff='nvim -d'
 
 # starship
@@ -63,5 +64,19 @@ eval "$(zoxide init zsh)"
 
 # fzf
 eval "$(fzf --zsh)"
-export FZF_DEFAULT_OPTS="--height 100% --color bg+:#434C5E,fg:#D8DEE9,fg+:#D8DEE9,header:#4C566A,hl:#A3BE8C,hl+:#A3BE8C,info:#4C566A,marker:#EBCB8B,pointer:#BF616A,prompt:#81A1C1,spinner:#4C566A"
+export FZF_DEFAULT_OPTS="--height=~100% --color bg+:#434C5E,fg:#D8DEE9,fg+:#D8DEE9,header:#4C566A,hl:#A3BE8C,hl+:#A3BE8C,info:#4C566A,marker:#EBCB8B,pointer:#BF616A,prompt:#81A1C1,spinner:#4C566A"
 zstyle ':fzf-tab:*' fzf-flags ${(z)FZF_DEFAULT_OPTS}
+
+# mihomo
+function proxy() {
+  export https_proxy="http://127.0.0.1:7890" http_proxy="http://127.0.0.1:7890" all_proxy="socks5://127.0.0.1:7890"
+}
+
+function unset-proxy() {
+  unset https_proxy http_proxy all_proxy
+}
+
+if [ $(pgrep mihomo) ]; then
+  proxy
+fi
+

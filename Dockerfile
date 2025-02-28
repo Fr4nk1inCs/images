@@ -19,7 +19,7 @@ ARG AUR_USER=aur
 ARG AUR_HELPER=paru
 ADD https://raw.githubusercontent.com/greyltc-org/docker-archlinux-aur/refs/heads/master/add-aur.sh /root/add-aur.sh
 RUN bash /root/add-aur.sh "${AUR_USER}" "${AUR_HELPER}"
-RUN aur-install mihomo clashtui
+RUN aur-install mihomo
 
 # zsh configuration
 RUN curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
