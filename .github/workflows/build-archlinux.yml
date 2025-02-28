@@ -1,10 +1,10 @@
-name: Build Arch Linux Docker Image
+name: Build Arch Linux (CUDA) Docker Image
 on:
   workflow_dispatch:
   pull_request:
   push:
     branches:
-      - archlinux
+      - archlinux-cuda
   schedule:
     - cron: "0 0 * * 0"
 jobs:
@@ -25,11 +25,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: fr4nk1in/archlinux:latest
+          tags: fr4nk1in/archlinux:latest-cuda
           outputs: |
-            type=docker,dest=archlinux-latest.tar
+            type=docker,dest=archlinux-latest-cuda.tar
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: archlinux-latest.tar
-          path: archlinux-latest.tar
+          name: archlinux-latest-cuda.tar
+          path: archlinux-latest-cuda.tar
